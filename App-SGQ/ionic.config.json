@@ -1,0 +1,7 @@
+{
+  "name": "trinus-planner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

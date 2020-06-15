@@ -1,0 +1,64 @@
+
+.text-center {
+  text-align: center;
+}
+
+.pad-top-bot-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  //height: 100%;
+}
+
+.error-message {
+  color: var(--ion-color-danger);
+}
+
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+
+
+.country-suggestions-empty {
+  background: lightgray;
+
+  ion-text {
+    color: white;
+    display: block;
+    font-size: large;
+    margin: 0 auto;
+    width: 225px;
+  }
+
+  div.country-suggestions-empty-icon {
+    background: lightgray url(/assets/icons/not-found.svg) no-repeat center;
+    min-height: 130px;
+  }
+}
+
+.flag {
+  width: 50px;
+  height: 50px;
+}
+
+.flag-image-wrapper .close-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  width: 30px;
+}
+
+.close-icon {
+  display: none;
+}
+
+.close-icon:hover {
+  display: flex;
+}

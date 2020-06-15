@@ -1,0 +1,44 @@
+<ion-tabs *ngIf="!isDesktop">
+  <ion-tab-bar slot="botton">
+
+    <!-- <ion-tab-button tab="incidente-list">
+      <ion-icon name="list-outline"></ion-icon>
+      <ion-label>Viagens</ion-label>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="incidente-crud">
+      <ion-icon name="warning-outline"></ion-icon>
+      <ion-label>Incidente</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="incidente-insumo-nc">
+      <ion-icon name="git-compare-outline"></ion-icon>
+      <ion-label>Associar NC</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>
+
+
+<ion-tabs *ngIf="isDesktop">
+  <ion-tab-bar slot="top">
+
+    <!-- <ion-tab-button tab="incidente-list">
+      <ion-icon name="list-outline"></ion-icon>
+      <ion-label>Viagens</ion-label>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="incidente-crud">
+      <ion-icon name="warning-outline"></ion-icon>
+      <ion-label>Incidente</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="incidente-insumo-nc">
+      <ion-icon name="git-compare-outline"></ion-icon>
+      <ion-label>Associar NC</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>
+
+

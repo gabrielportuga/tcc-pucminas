@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="!isNewIncidente()">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start" *ngIf="isNewIncidente()">
+      <ion-back-button defaultHref="incidente-list"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>Dados da Viagem</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-row>
+    <ion-col size-md="10" size-lg="6" size-xs="12" offset-md="1" offset-lg="2" offset-xl="3">
+      <ion-fab vertical="top" horizontal="end" edge>
+
+        <ion-fab-button *ngIf="existIncidente()" (click)="onSubmit()">
+          <ion-icon name="save-outline"></ion-icon>
+        </ion-fab-button>
+
+        <!-- <p>
+          <ion-fab-button color="danger" *ngIf="!existIncidente()" (click)="delete()">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-fab-button>
+        </p> -->
+        <div *ngIf="!existIncidente()">
+          <ion-fab-button>
+            <ion-icon name="caret-down-circle-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list>
+            <ion-fab-button color="secondary" (click)="onSubmit()">
+              <ion-icon name="save-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="danger" (click)="delete()">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </div>
+      </ion-fab>
+
+      <div style="margin-left: 20px;">
+        <h4 class="color-secondary">
+          Associar NC >> Insumo
+        </h4>
+      </div>
+
+      <form [formGroup]="validationsForm" (ngSubmit)="onSubmit()">
+        <!-- <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Para onde vou viajar?</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card> -->
+        <ion-row>
+          <ion-col size-md="12" size-lg="12" size-xs="12">
+            <ion-item>
+              <ion-label>Insumos</ion-label>
+              <ionic-selectable item-content [(ngModel)]="this.incidente.incidenteInsumoNc" itemValueField="id"
+                itemTextField="nome" [items]="insumos" [canSearch]="true" [isMultiple]="true" formControlName="insumo">
+              </ionic-selectable>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size-md="12" size-lg="12" size-xs="12">
+            <ion-item>
+              <ion-label>Não Conformidades</ion-label>
+              <ionic-selectable item-content [(ngModel)]="this.incidente.incidenteInsumoNc" itemValueField="id"
+                itemTextField="nome" [items]="ncs" [canSearch]="true" [isMultiple]="true" formControlName="insumo">
+              </ionic-selectable>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

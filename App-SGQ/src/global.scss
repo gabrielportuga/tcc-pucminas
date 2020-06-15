@@ -1,0 +1,161 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.li-ionic4-datePicker {
+    .modal-wrapper {
+        height: 75%;
+        max-height: 478px;
+        width: 312px;
+        border-radius: 0px;
+        // --ion-color-primary: orange; // This Variable used for the change of colour ion-datepicker only.
+        // --ion-color-primary-tint: rgb(214, 153, 153); // This Variable changes the tint colour of background when click button.
+
+        ion-button {
+            // --ion-color-primary: green; // This Variable used for the change colour of buttons only.
+            // --ion-color-primary-tint: lightgreen; // This Variable changes the tint color of background when click buttons.
+            // --border-radious: 0px; // This Variable changes the border radious of buttons.
+            // button customization css write here...
+            margin-top: -10px !important;
+            --border-radious: 10px !important;
+        }
+
+        @media (min-width: 768px) {
+            width: 350px;
+            height: 65%;
+        }
+    }
+}
+
+.floatingwithicon {
+    .clearButton {
+        right: 37px !important;
+        bottom: 11px !important;
+    }
+}
+
+.list-md {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.list-md {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.list-ios:not(.list-inset):not(.list-ios-lines-none) .item:last-child {
+    --inner-border-width: 0;
+    //--border-width: 0 0 1px 0;
+    --border-width: 0;
+}
+
+.list-md:not(.list-inset):not(.list-md-lines-none) .item:last-child {
+    --inner-border-width: 0;
+    //--border-width: 0 0 1px 0;
+    --border-width: 0;
+
+}
+
+ion-card.ios {
+    box-shadow: none !important;
+    border: solid;
+    border-width: thin;
+    border-radius: 5px;
+}
+
+ion-card.md {
+    box-shadow: none !important;
+    border: solid;
+    border-width: thin;
+    border-radius: 5px;
+    border-color: #E0E0E0;
+}
+
+.color-secondary {
+    color: #2686AB;
+}
+
+.desktop-wrapper {
+    ion-toolbar {
+        text-align: center;
+    }
+
+    ion-header {
+        &.header-md:after {
+            background: none;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 990px) {
+    .desktop {
+        ion-split-pane {
+            margin-top: 56px;
+            //margin-bottom: 56px;
+        }
+    }
+
+    .menu {
+        width: 100%;
+        color: #fff;
+        font-weight: bold;
+        background: #2686AB;
+        height: 56px;
+        line-height: 56px;
+        text-align: center;
+        position: fixed;
+        top: 0px;
+    }
+
+    .footer {
+        width: 100%;
+        color: #fff;
+        font-weight: bold;
+        background: #2686AB;
+        height: 56px;
+        line-height: 56px;
+        text-align: center;
+        position: fixed;
+        bottom: 0px;
+    }
+
+  
+}
+
+@media only screen and (max-width: 990px) {
+    .desktop {
+        .menu {
+            display: none;
+        }
+
+        ion-split-pane {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<ion-content padding class="form-content">
+  <ion-row padding justify-content-center class="center">
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <!-- <ion-card class="pad-top-bot-40"> -->
+        <ion-row padding justify-content-center class="center">
+          <ion-col align-self-center size-md="6" size-lg="6" size-xs="12">
+            <div class="text-center">
+              <h2>
+                SGQ <ion-icon name="car" size="large"></ion-icon>
+              </h2>
+            </div>
+          </ion-col>
+        </ion-row>
+        <form [formGroup]="validationsForm" (ngSubmit)="tryLogin(validationsForm.value)">
+          <ion-grid>
+            <ion-row padding justify-content-center class="center">
+              <ion-col align-self-center size-md="12" size-lg="10" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">CPF</ion-label>
+                  <ion-input type="text" formControlName="cpf"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessages.cpf">
+                    <div class="error-message"
+                      *ngIf="validationsForm.get('cpf').hasError(validation.type) && (validationsForm.get('cpf').dirty || validationsForm.get('cpf').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row padding justify-content-center class="center">
+              <ion-col align-self-center size-md="12" size-lg="10" size-xs="12">
+                <ion-item>
+                  <ion-label position="floating">Senha</ion-label>
+                  <ion-input type="senha" formControlName="senha"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validationMessages.senha">
+                    <div class="error-message"
+                      *ngIf="validationsForm.get('senha').hasError(validation.type) && (validationsForm.get('senha').dirty || validationsForm.get('senha').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row padding justify-content-center class="center">
+              <ion-col align-self-center size-md="12" size-lg="10" size-xs="12">
+                <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validationsForm.valid">Entrar</ion-button>
+                <!-- <ion-button expand="block" (click)="goRegisterPage()">Criar conta</ion-button> -->
+                <label class="error-message">{{errorMessage}}</label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      <!-- </ion-card> -->
+    </ion-col>
+  </ion-row>
+</ion-content>

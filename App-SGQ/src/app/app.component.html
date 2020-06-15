@@ -1,0 +1,52 @@
+<ion-app>
+  <div *ngIf="isDesktop" class="desktop">
+    <div class="menu">
+      <span>SGQ</span>
+    </div>
+
+  </div>
+  <div class="desktop">
+    <ion-split-pane contentId="main">
+      <!--  our side menu  -->
+      <ion-menu contentId="main">
+        <ion-header class="ion-no-border" translucent>
+          <ion-toolbar>
+            <ion-title color="secondary">
+              SGQ<ion-icon color="secondary" name="car"></ion-icon>
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                <ion-icon color="secondary" slot="start" [name]="p.icon"></ion-icon>
+                <ion-label>
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle auto-hide="false">
+            <ion-item [routerLink]="" (click)="logout()">
+              <ion-icon color="secondary" slot="start" name="log-out-outline"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+      <!-- the main content -->
+      <ion-router-outlet id="main" class="desktop-wrapper">
+      </ion-router-outlet>
+    </ion-split-pane>
+  </div>
+<!-- 
+  <div *ngIf="isDesktop" class="desktop">
+    <div class="footer">
+      <span>Desde de 2020</span>
+    </div>
+
+  </div> -->
+</ion-app>
