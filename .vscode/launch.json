@@ -1,0 +1,84 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "GatewayAPI",
+            "program": "${workspaceFolder}\\API-Gateway\\index.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "AuthorizationAPI",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\API-Authorization\\index.js",
+            // "envFile": "${workspaceFolder}\\api-fake-products\\env.dev"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "UsersAPI",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\API-Users\\src\\server.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "PartsAPI",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\API-Parts\\src\\server.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "IncidentsAPI",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\API-Incidents\\src\\server.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "NCAPI",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\API-NC\\src\\server.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "ManagerNCsAPI",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\API-Manager-Incidents\\index.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "SequelizeEx",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\sequelize-with-postgres-tutorial-master\\index.js",
+        }
+    ],
+    "compounds": [
+      {
+        "name": "SGQ",
+        "configurations": ["GatewayAPI", "AuthorizationAPI", "UsersAPI", "PartsAPI", "ManagerNCsAPI", "IncidentsAPI"]
+      }
+    ]
+}
