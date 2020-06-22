@@ -1,5 +1,6 @@
+import { NcModel } from './nc-model';
+import { InsumoModel } from './insumo-model';
 import { IncidenteInsumoNcModel } from './incidenteInsumoNc-model';
-
 
 export interface IncidenteModel {
   id: number;
@@ -9,5 +10,10 @@ export interface IncidenteModel {
   data_inclusao: string;
   data_alteracao: string;
   id_usuario_alteracao: number;
+  id_insumo: number;
+  id_nc: number;
+  nome: string;
+  insumos: InsumoModel[];
+  ncs: NcModel[];
   incidenteInsumoNc: IncidenteInsumoNcModel[];
 }

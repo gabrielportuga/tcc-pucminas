@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   Insumo.associate = function(models) {
     // associations can be defined here
     
-    Insumo.belongsToMany(models.Incidente, {
-      through: models.IncidenteInsumoNC,
-      foreignKey: 'id_insumo', // replaces `productId`
-      otherKey: 'id_incidente' // replaces `categoryId`
-    });
+    // Insumo.belongsToMany(models.Incidente, {
+    //   through: models.IncidenteInsumoNC,
+    //   foreignKey: 'id_insumo', // replaces `productId`
+    //   otherKey: 'id_incidente' // replaces `categoryId`
+    // });
 
     // Insumo.belongsToMany(models.Incidente, {
     //   through:"incidente_insumo"

@@ -29,17 +29,18 @@ module.exports = (sequelize, DataTypes) => {
       as: "UsuarioAlteracao",
     });
 
-    Incidente.belongsToMany(models.Insumo, {
-      through: models.IncidenteInsumoNC,
-      foreignKey: 'id_incidente', // replaces `productId`
-      otherKey: 'id_insumo' // replaces `categoryId`
+
+    Incidente.hasMany(models.Insumo, {
+      foreignKey: "id_insumo",
+      as: "Insumo"
     });
 
-    Incidente.hasMany(models.IncidenteInsumoNC, {
-      foreignKey: "id_insumo",
-      as: "IncidenteInsumo",
-      onDelete: "CASCADE",
-    });
+
+    // Incidente.hasMany(models.IncidenteInsumoNC, {
+    //   foreignKey: "id_insumo",
+    //   as: "IncidenteInsumo",
+    //   onDelete: "CASCADE",
+    // });
 
     // Incidente.belongsToMany(models.Insumo, {
     //   through:"incidente_insumo"

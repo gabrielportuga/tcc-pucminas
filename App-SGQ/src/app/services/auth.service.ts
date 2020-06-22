@@ -29,15 +29,18 @@ export class AuthService {
   doRegister(value) {}
 
   doLogin(value): Observable<any> {
-    const url = environment.serverHost + '/api/validateuser';
+    const url = environment.serverHost + '/auth/login';
     const params = JSON.stringify(value);
 
     return this.httpClient.post(url, params, this.getOptions());
   }
 
   getUser(): UserModel {
-    let user: UserModel;
-    user = JSON.parse(localStorage.getItem('user'));
+    let user = {} as  UserModel;
+    if (localStorage.getItem('user') !== null) {
+      const response = JSON.parse(localStorage.getItem('user'));
+      user = response.user;
+    }
     return user;
   }
 

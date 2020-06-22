@@ -12,6 +12,8 @@ router.get('/incidents', incidentController.listAllIncidents);
 // ==> Rota responsável por selecionar 'incident' pelo 'Id': (GET): localhost:3000/api/incidents/:id
 router.get('/incident/:id', incidentController.findIncident);
 
+router.get('/incidentInsumosNcs/:id', incidentController.findIncidentPartsNCs);
+
 // ==> Rota responsável por atualizar 'incident' pelo 'Id': (PUT): localhost: 3000/api/incidents/:id
 router.put('/incident/:id', incidentController.updateIncident);
 

@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component } from '@angular/core';
 import { ScreensizeService } from '../services/screensize.service';
 
@@ -8,7 +9,10 @@ import { ScreensizeService } from '../services/screensize.service';
 })
 export class TabsPage {
   isDesktop: boolean;
-  constructor(private screensizeService: ScreensizeService) {
+  constructor(
+    private screensizeService: ScreensizeService,
+    private authService: AuthService
+  ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
       if (this.isDesktop && !isDesktop) {
         // Reload because our routing is out of place

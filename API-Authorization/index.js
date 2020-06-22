@@ -31,7 +31,6 @@ app.post('/auth/login', (req, res, next) => {
   authenticate(data).then((bufferOne) => {
     if (bufferOne) {
       //auth ok
-
       var buffer = Buffer.from(bufferOne);
       let user = buffer.toString('utf-8');
       user = JSON.parse(user);
@@ -66,7 +65,7 @@ function authenticate(data) {
     let req = http.request(
       {
         hostname: 'localhost',
-        port: 3001,
+        port: 3000,
         path: '/api/validateuser',
         method: 'POST',
         headers: {

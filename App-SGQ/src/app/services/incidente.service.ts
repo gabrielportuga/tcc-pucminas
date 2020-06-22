@@ -34,6 +34,20 @@ export class IncidenteService {
     return result;
   }
 
+  getIncidente(idIncidente: number): Observable<IncidenteModel> {
+    const url = environment.serverHost + '/api/incident/' + idIncidente;
+
+    const result: any = this.httpClient.get(url, this.getOptions());
+    return result;
+  }
+
+  getIncidentInsumosNcs(idIncidente: number): Observable<IncidenteModel> {
+    const url = environment.serverHost + '/api/incidentInsumosNcs/' + idIncidente;
+
+    const result: any = this.httpClient.get(url, this.getOptions());
+    return result;
+  }
+
   createIncidente(incidente: IncidenteModel): Observable<IncidenteModel> {
     const url = environment.serverHost + '/api/incident';
     const params = JSON.stringify(incidente);
@@ -46,15 +60,15 @@ export class IncidenteService {
     id: number,
     incidente: IncidenteModel
   ): Observable<IncidenteModel> {
-    const url = environment.serverHost + '/api/incidents';
-    const params = '';
+    const url = environment.serverHost + '/api/incident/' + id;
+    const params = JSON.stringify(incidente);
 
-    const result: any = this.httpClient.put(url, this.getOptions());
+    const result: any = this.httpClient.put(url, params, this.getOptions());
     return result;
   }
 
   deleteIncidente(id: number): Observable<IncidenteModel> {
-    const url = environment.serverHost + '/api/incidents';
+    const url = environment.serverHost + '/api/incident/' + id;
     const params = '';
 
     const result: any = this.httpClient.delete(url, this.getOptions());

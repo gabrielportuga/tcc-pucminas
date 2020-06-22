@@ -58,7 +58,7 @@ exports.deleteUser = async (req, res) => {
 exports.validateUser = async (req, res) => {
   const { cpf, senha } = req.body;
   const response = await db.query(
-    'SELECT id, cpf, nome FROM "SGQ".usuario WHERE cpf = $1 and senha = $2',
+    'SELECT id, cpf, nome, perfil FROM "SGQ".usuario WHERE cpf = $1 and senha = $2',
     [cpf, senha]
   );
 

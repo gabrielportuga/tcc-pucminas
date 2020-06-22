@@ -78,7 +78,7 @@
     "compounds": [
       {
         "name": "SGQ",
-        "configurations": ["GatewayAPI", "AuthorizationAPI", "UsersAPI", "PartsAPI", "ManagerNCsAPI", "IncidentsAPI"]
+        "configurations": ["GatewayAPI", "AuthorizationAPI", "UsersAPI", "PartsAPI", "ManagerNCsAPI", "IncidentsAPI", "NCAPI"]
       }
     ]
 }

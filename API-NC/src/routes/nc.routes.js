@@ -6,6 +6,8 @@ const ncController = require('../controllers/nc.controller');
 // ==> Rota responsável por criar um novo 'nc': (POST): localhost:3000/api/ncs
 router.post('/nc', ncController.createNc);
 
+router.post('/ncincins', ncController.createIncidenteInsumoNc);
+
 // ==> Rota responsável por listar todos os 'ncs': (GET): localhost:3000/api/ncs
 router.get('/ncs', ncController.listAllNcs);
 

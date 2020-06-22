@@ -131,13 +131,16 @@ export class IncidenteInsumoNcPage implements OnInit, OnDestroy {
 
   resetFields() {
     this.validationsForm = this.formBuilder.group({
-      descricao: new FormControl('', Validators.required),
-      dataIncidente: new FormControl(''),
       insumo: new FormControl(''),
+      nc: new FormControl(''),
       // description: new FormControl('', Validators.required),
     });
   }
 
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
+  
   onSubmit() {
     // console.log(this.incidente);
     if (this.validationsForm.valid) {
@@ -196,28 +199,29 @@ export class IncidenteInsumoNcPage implements OnInit, OnDestroy {
       this.incidente = this.sharedTabsIncidente.tabIncidente;
     }
 
-    if (!isUndefined(this.router.getCurrentNavigation().extras.state)) {
-      // const loading = await this.loadingCtrl.create({
-      //   message: 'Please wait...',
-      // });
-      // this.presentLoading(loading);
-      this.incidente = this.router.getCurrentNavigation().extras.state.incidente;
+    //if (!isUndefined(this.router.getCurrentNavigation().extras.state)) {
+    if (this.incidente !== undefined) {
+      const loading = await this.loadingCtrl.create({
+        message: 'Aguarde...',
+      });
+      this.presentLoading(loading);
+      //this.incidente = this.router.getCurrentNavigation().extras.state.incidente;
       this.sharedTabsIncidente.tabIncidente = this.incidente;
 
-      // this.incidenteService.getIncidente(incidenteId).subscribe(
-      //   (data) => {
-      //     loading.dismiss();
-      //     if (data) {
-      //       this.incidente = data;
-      //       this.incidente.id = incidenteId;
-      //       this.sharedTabsIncidente.tabIncidente = this.incidente;
-      //     }
-      //   },
-      //   (err) => {
-      //     loading.dismiss();
-      //     console.log(err);
-      //   }
-      // );
+      this.incidenteService.getIncidentInsumosNcs(this.incidente.id).subscribe(
+        (data) => {
+          loading.dismiss();
+          if (data) {
+            this.incidente = data;
+            this.incidente.id = this.incidente.id;
+            this.sharedTabsIncidente.tabIncidente = this.incidente;
+          }
+        },
+        (err) => {
+          loading.dismiss();
+          console.log(err);
+        }
+      );
     }
   }
 

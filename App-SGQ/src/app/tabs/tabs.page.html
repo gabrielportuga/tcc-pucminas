@@ -11,7 +11,7 @@
       <ion-label>Incidente</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="incidente-insumo-nc">
+    <ion-tab-button tab="incidente-insumo-nc" *ngIf="this.authService.getUser().id !== undefined && this.authService.getUser().perfil === 'Gestor Qualidade'">
       <ion-icon name="git-compare-outline"></ion-icon>
       <ion-label>Associar NC</ion-label>
     </ion-tab-button>
@@ -33,7 +33,7 @@
       <ion-label>Incidente</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="incidente-insumo-nc">
+    <ion-tab-button tab="incidente-insumo-nc" *ngIf="this.authService.getUser().id !== undefined && this.authService.getUser().perfil === 'Gestor Qualidade'">
       <ion-icon name="git-compare-outline"></ion-icon>
       <ion-label>Associar NC</ion-label>
     </ion-tab-button>

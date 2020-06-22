@@ -8,6 +8,6 @@ export class IncidenteResolver implements Resolve<any> {
   constructor(private incidenteService: IncidenteService) {}
 
   resolve() {
-    //return this.incidenteService.getIncidentes();
+    return this.incidenteService.getIncidentes();
   }
 }

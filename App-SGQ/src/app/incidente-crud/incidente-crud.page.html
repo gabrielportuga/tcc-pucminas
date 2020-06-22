@@ -45,7 +45,6 @@
           Incidente
         </h4>
       </div>
-
       <form [formGroup]="validationsForm" (ngSubmit)="onSubmit()">
         <!-- <ion-card>
           <ion-card-header>
@@ -80,7 +79,7 @@
           <ion-col size-md="12" size-lg="12" size-xs="12">
             <ion-item>
               <ion-label>Insumos</ion-label>
-              <ionic-selectable item-content [(ngModel)]="this.incidente.incidenteInsumoNc" itemValueField="id" itemTextField="nome"
+              <ionic-selectable item-content [(ngModel)]="this.incidente.insumos" itemValueField="id" itemTextField="nome"
                 [items]="insumos" [canSearch]="true" [isMultiple]="true" formControlName="insumo">
               </ionic-selectable>
             </ion-item>

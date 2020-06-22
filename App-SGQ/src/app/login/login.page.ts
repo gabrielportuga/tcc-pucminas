@@ -1,34 +1,34 @@
 import { UserModel } from './../../models/user-model';
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   Validators,
   FormBuilder,
   FormGroup,
   FormControl,
-} from "@angular/forms";
-import { Router } from "@angular/router";
-import { AuthService } from "../services/auth.service";
-import { MenuController } from "@ionic/angular";
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.page.html",
-  styleUrls: ["./login.page.scss"],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
-  errorMessage = "";
+  errorMessage = '';
 
   validationMessages = {
     cpf: [
-      { type: "required", message: "Email is required." },
-      { type: "pattern", message: "Please enter a valid email." },
+      { type: 'required', message: 'Email is required.' },
+      { type: 'pattern', message: 'Please enter a valid email.' },
     ],
     senha: [
-      { type: "required", message: "Password is required." },
+      { type: 'required', message: 'A senha é obrigatória' },
       {
-        type: "minlength",
-        message: "Password must be at least 5 characters long.",
+        type: 'minlength',
+        message: 'A senha deve possuir mais de 5 caracteres.',
       },
     ],
   };
@@ -41,10 +41,10 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.menuCtrl.enable(false);
+    // this.menuCtrl.enable(false);
     this.validationsForm = this.formBuilder.group({
       cpf: new FormControl(
-        "",
+        '',
         Validators.compose([Validators.minLength(5), Validators.required])
         // Validators.compose([
         //   Validators.required,
@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
         // ])
       ),
       senha: new FormControl(
-        "",
+        '',
         Validators.compose([Validators.minLength(5), Validators.required])
       ),
     });
@@ -62,16 +62,17 @@ export class LoginPage implements OnInit {
     this.authService.doLogin(value).subscribe(
       (res) => {
         localStorage.setItem('user', JSON.stringify(res));
-        this.router.navigate(["/incidente"]);
+        this.router.navigate(['/incidente']);
+        window.location.reload();
       },
       (err) => {
-        this.errorMessage = err.message;
+        this.errorMessage = 'Usuário ou senha inválidos!';
         console.log(err);
       }
     );
   }
 
   goRegisterPage() {
-    this.router.navigate(["/register"]);
+    this.router.navigate(['/register']);
   }
 }

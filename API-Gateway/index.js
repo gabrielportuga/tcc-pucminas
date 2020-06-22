@@ -53,9 +53,25 @@ app.post('/api/validateuser', (req, res, next) =>
 app.get('/api/incidents', (req, res, next) =>
   incidentServiceProxy(req, res, next)
 );
+app.get('/api/incident/:id', (req, res, next) =>
+  incidentServiceProxy(req, res, next)
+);
+app.get('/api/incident/:id', (req, res, next) =>
+  incidentServiceProxy(req, res, next)
+);
+app.get('/api/incidentInsumosNcs/:id', (req, res, next) =>
+  incidentServiceProxy(req, res, next)
+);
 app.post('/api/incident', (req, res, next) =>
   incidentServiceProxy(req, res, next)
 );
+app.put('/api/incident/:id', (req, res, next) =>
+  incidentServiceProxy(req, res, next)
+);
+app.delete('/api/incident/:id', (req, res, next) =>
+  incidentServiceProxy(req, res, next)
+);
+
 
 app.get('/api/parts', (req, res, next) => partServiceProxy(req, res, next));
 app.get('/api/partsLike/name/:name', (req, res, next) =>
@@ -64,6 +80,7 @@ app.get('/api/partsLike/name/:name', (req, res, next) =>
 app.post('/api/part', (req, res, next) => partServiceProxy(req, res, next));
 
 app.get('/api/ncs', (req, res, next) => ncServiceProxy(req, res, next));
+app.get('/api/ncs/incins', (req, res, next) => ncServiceProxy(req, res, next));
 
 app.get('/managerNC/incidentesNCs', (req, res, next) =>
   managerNCsServiceProxy(req, res, next)

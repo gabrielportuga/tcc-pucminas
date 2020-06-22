@@ -4,7 +4,13 @@ import { IncidenteModel } from 'src/models/incidente-model';
 import { IncidenteService } from './../services/incidente.service';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, MenuController } from '@ionic/angular';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import {
+  Router,
+  ActivatedRoute,
+  NavigationExtras,
+  NavigationStart,
+  Event,
+} from '@angular/router';
 
 @Component({
   selector: 'app-incidente',
@@ -26,19 +32,27 @@ export class IncidentePage implements OnInit {
     const user = authService.getUser();
     if (!user) {
       this.router.navigate(['login']);
+    } else {
+      this.router.events.subscribe((event: Event) => {
+        if (event instanceof NavigationStart) {
+          this.getData();
+        }
+      });
     }
   }
 
   ngOnInit() {
-    if (this.route && this.route.data) {
-      this.getData();
-      this.menuCtrl.enable(true);
+    if (this.authService.getUser().id !== undefined) {
+      if (this.route && this.route.data) {
+        this.getData();
+        this.menuCtrl.enable(true);
+      }
     }
   }
 
   async getData() {
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...',
+      message: 'Aguarde...',
     });
     this.presentLoading(loading);
 

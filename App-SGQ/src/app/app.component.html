@@ -15,25 +15,39 @@
               SGQ<ion-icon color="secondary" name="car"></ion-icon>
             </ion-title>
           </ion-toolbar>
+          <ion-label style="margin-left: 20px; font-weight: bold;">
+            {{ this.authService.getUser()?.nome }} - {{ this.authService.getUser()?.perfil }}
+        </ion-label>
         </ion-header>
         <ion-content>
           <ion-list>
             <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]"  *ngIf="this.authService.getUser().id !== undefined">
                 <ion-icon color="secondary" slot="start" [name]="p.icon"></ion-icon>
                 <ion-label>
                   {{p.title}}
                 </ion-label>
               </ion-item>
             </ion-menu-toggle>
-            <ion-menu-toggle auto-hide="false">
+            
+            <ion-menu-toggle auto-hide="false" *ngIf="this.authService.getUser().id === undefined">
             <ion-item [routerLink]="" (click)="logout()">
-              <ion-icon color="secondary" slot="start" name="log-out-outline"></ion-icon>
+              <ion-icon color="secondary" slot="start" name="log-in-outline"></ion-icon>
               <ion-label>
-                Logout
+                Login
               </ion-label>
             </ion-item>
             </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="false" *ngIf="this.authService.getUser().id !== undefined">
+              <ion-item [routerLink]="" (click)="logout()">
+                <ion-icon color="secondary" slot="start" name="log-out-outline"></ion-icon>
+                <ion-label>
+                  Logout
+                </ion-label>
+              </ion-item>
+              </ion-menu-toggle>
+
           </ion-list>
         </ion-content>
       </ion-menu>

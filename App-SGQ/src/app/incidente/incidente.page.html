@@ -12,48 +12,60 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-row>
-  <ion-col size-md="10" size-lg="6" size-xs="12" offset-md="1" offset-lg="2" offset-xl="3">
-    <ion-fab vertical="top" horizontal="end" edge>
-      <ion-fab-button (click)="goToNewIncidente()">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <div *ngIf="items">
-      <div style="margin-left: 20px;" *ngIf="items.length > 0">
-        <h4 class="color-secondary">
-          Incidentes Cadastrados
-        </h4>
-      </div>
-    </div>
-  </ion-col>
-</ion-row>
 
-<ion-content>
-  <ion-row *ngIf="items">
+<ion-content *ngIf="this.authService.getUser().id === undefined">
+  <ion-row>
     <ion-col size-md="10" size-lg="6" size-xs="12" offset-md="1" offset-lg="2" offset-xl="3">
-      <div *ngIf="items.length > 0">
-        <ion-list no-lines >
-        <ion-card *ngFor="let item of items"  (click)="openIncidenteMaintain(item.id, item)">
-          <!-- <ion-item *ngFor="let item of items" [routerLink]="['/incidente-maintain', item.id]"> -->
-          <ion-item>
-            <ion-label>
-              <h2>Incidente: {{item.descricao}}</h2>
-              <!-- <h5 style="padding-bottom: 10px;">Aqui vai entrar o Nome do Viajante</h5> -->
-              <p>{{item.data_inclusao}}</p>
-            </ion-label>
-            <ion-icon name="arrow-forward-circle-outline" slot="end"></ion-icon>
-          </ion-item>
-        </ion-card>
-      </ion-list>
-      </div>
-      
-      <div *ngIf="items.length == 0" class="empty-list text-center pad-top-40">
-        <h1>
-          <ion-icon name="car"></ion-icon>
-        </h1>
-        Parece que não temos nenhuma viagem compartilhada por aqui!
-      </div>
+      <ion-label>
+        <h2>Você precisa estar logado e possuir acesso a esta página para visualizá-la!</h2>
+      </ion-label>
     </ion-col>
   </ion-row>
 </ion-content>
+
+
+  <ion-row *ngIf="this.authService.getUser().id !== undefined">
+    <ion-col size-md="10" size-lg="6" size-xs="12" offset-md="1" offset-lg="2" offset-xl="3">
+      <ion-fab vertical="top" horizontal="end" edge>
+        <ion-fab-button (click)="goToNewIncidente()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <div *ngIf="items">
+        <div style="margin-left: 20px;" *ngIf="items.length > 0">
+          <h4 class="color-secondary">
+            Incidentes Cadastrados
+          </h4>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-content *ngIf="this.authService.getUser().id !== undefined">
+    <ion-row *ngIf="items">
+      <ion-col size-md="10" size-lg="6" size-xs="12" offset-md="1" offset-lg="2" offset-xl="3">
+        <div *ngIf="items.length > 0">
+          <ion-list no-lines>
+            <ion-card *ngFor="let item of items" (click)="openIncidenteMaintain(item.id, item)">
+              <!-- <ion-item *ngFor="let item of items" [routerLink]="['/incidente-maintain', item.id]"> -->
+              <ion-item>
+                <ion-label>
+                  <h2>Incidente: {{item.descricao}}</h2>
+                  <h5 style="padding-bottom: 10px;">Funcionário: {{item.nome}}</h5>
+                  <p>Data do Incidente: {{item.data_incidente}}</p>
+                </ion-label>
+                <ion-icon name="arrow-forward-circle-outline" slot="end"></ion-icon>
+              </ion-item>
+            </ion-card>
+          </ion-list>
+        </div>
+
+        <div *ngIf="items.length == 0" class="empty-list text-center pad-top-40">
+          <h1>
+            <ion-icon name="car"></ion-icon>
+          </h1>
+          Parece que não temos nenhuma viagem compartilhada por aqui!
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-content>

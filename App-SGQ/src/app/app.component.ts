@@ -1,5 +1,5 @@
 import { UserModel } from './../models/user-model';
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -16,19 +16,9 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   isDesktop: boolean;
-
-  public appPages = [
-    {
-      title: 'Incidente',
-      url: '/incidente',
-      icon: 'warning-outline',
-    },
-    {
-      title: 'Não Conformidades',
-      url: '/',
-      icon: 'receipt-outline',
-    },
-  ];
+  usuario: string;
+  user: UserModel;
+  public appPages: any;
 
   constructor(
     private platform: Platform,
@@ -53,6 +43,32 @@ export class AppComponent {
     this.platform.ready().then(() => {
       const user: UserModel = this.authService.getUser();
       if (user) {
+        this.usuario = user.nome + ' - ' + user.perfil;
+        this.user = user;
+
+        if (this.user.perfil === 'Gestor Qualidade') {
+          this.appPages = [
+            {
+              title: 'Incidente',
+              url: '/incidente',
+              icon: 'warning-outline',
+            },
+            {
+              title: 'Não Conformidades',
+              url: '/',
+              icon: 'receipt-outline',
+            },
+          ];
+        } else if (this.user.perfil === 'Operador') {
+          this.appPages = [
+            {
+              title: 'Incidente',
+              url: '/incidente',
+              icon: 'warning-outline',
+            },
+          ];
+        }
+
         this.router.navigate(['/incidente']);
       } else {
         this.router.navigate(['/login']);

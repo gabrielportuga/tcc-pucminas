@@ -27,6 +27,29 @@ exports.createNc = async (req, res) => {
   }
 };
 
+exports.createIncidenteInsumoNc = async (req, res) => {
+  try {
+    const dataInclusao = new Date().getDate().toString();
+    const idIncidente = req.body.idIncidente;
+    const idInsumo = req.body.idInsumo;
+    const idNc = req.body.idNc;
+    const idUsuarioNc = req.body.idUsuarioNc;
+    let id = 0;
+
+    await db
+      .query(
+        'INSERT INTO "SGQ".incidente_insumo_nc (id_incidente, id_insumo, id_nc, id_usuario_nc, data_nc) ' +
+        'VALUES ($1, $2, $3, $4, $5) RETURNING id',
+        [idIncidente, idInsumo, idNc, idUsuarioNc, dataInclusao]
+      )
+      .then((resp) => {
+        res.status(200).send(response.rows);
+      });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 // ==> Método responsável por listar todos os 'incident':
 exports.listAllNcs = async (req, res) => {
   const response = await db.query(
